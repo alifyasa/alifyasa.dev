@@ -1,0 +1,19 @@
+---
+export interface Props {
+	href: string;
+	imagePath: string;
+}
+
+const { href, imagePath } = Astro.props;
+---
+
+<a
+	class="hover:bg-zinc-200 flex-1 rounded-sm sm:py-2"
+	href={href}
+	target="_blank"
+>
+	<img
+		class="object-contain object-center h-full w-full"
+		src={imagePath}
+	/>
+</a>

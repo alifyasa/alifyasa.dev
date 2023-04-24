@@ -1,0 +1,33 @@
+---
+import Layout from "./Layout.astro";
+
+export interface Props {
+	title: string;
+	extraButton: {
+		name: string | null;
+		link: string | null;
+	};
+}
+const { title, extraButton } = Astro.props;
+const displayButton = extraButton.name !== null;
+---
+
+<Layout title={title}>
+	<div class="flex justify-start gap-8 m-16">
+		<h1 class="text-5xl font-bold">{title.toUpperCase()}</h1>
+		{
+			displayButton && (
+				<a
+					href={extraButton.link}
+					target="_blank"
+					class="bg-zinc-700 hover:bg-zinc-600 font-bold px-4 rounded-sm text-center flex items-center justify-center"
+				>
+					{extraButton.name}
+				</a>
+			)
+		}
+	</div>
+	<div class="m-16 text-2xl/normal space-y-4">
+		<slot />
+	</div>
+</Layout>

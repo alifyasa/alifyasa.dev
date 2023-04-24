@@ -1,0 +1,15 @@
+---
+import Content from "./Content.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<Content
+	title={frontmatter.title}
+	extraButton={{
+		name: frontmatter.extraLinkName,
+		link: frontmatter.extraLink,
+	}}
+>
+	<slot />
+</Content>
