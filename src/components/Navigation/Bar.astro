@@ -1,10 +1,12 @@
 ---
-import Button from './Button.astro'
+import Button from "./Button.astro";
 const currentPath = Astro.url.pathname;
 ---
 
-<nav class="bg-zinc-700 font-montserrat w-full flex justify-stretch fixed top-0 h-[calc(100%/15)] text-zinc-100 font-medium">
-	<Button currentPath={currentPath} href="/"> HOME </Button>
-	<Button currentPath={currentPath} href="/projects"> PROJECTS </Button>
-	<Button currentPath={currentPath} href="/about"> ABOUT </Button>
+<nav
+	class="bg-zinc-700 font-montserrat w-full flex justify-stretch fixed top-0 h-[calc(100%/15)] text-zinc-100 font-medium"
+>
+	<Button currentPath={currentPath} href="/">HOME</Button>
+	<Button currentPath={currentPath} href="/projects/">PROJECTS</Button>
+	<Button currentPath={currentPath} href="/about/">ABOUT</Button>
 </nav>
