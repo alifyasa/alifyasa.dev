@@ -13,21 +13,29 @@ const displayButton = extraButton.name !== null;
 ---
 
 <Layout title={title}>
-	<div class="flex justify-start gap-8 m-16">
-		<h1 class="text-5xl font-bold">{title.toUpperCase()}</h1>
+	<div
+		class="flex justify-start gap-8 m-8 sm:m-10 md:m-12 lg:m-14 xl:m-16 items-center"
+	>
+		<h1
+			class="text-2xl/normal sm:text-3xl/normal md:text-4xl/normal lg:text-5xl/normal font-bold"
+		>
+			{title.toUpperCase()}
+		</h1>
 		{
 			displayButton && (
 				<a
 					href={extraButton.link}
 					target="_blank"
-					class="bg-zinc-700 hover:bg-zinc-600 font-bold px-4 rounded-sm text-center flex items-center justify-center"
+					class="bg-zinc-700 hover:bg-zinc-600 font-bold p-2 md:p-3 xl:p-4 rounded-sm text-center flex items-center justify-center"
 				>
 					{extraButton.name}
 				</a>
 			)
 		}
 	</div>
-	<div class="m-16 text-2xl/normal space-y-4">
+	<div
+		class="m-8 sm:m-10 md:m-12 lg:m-14 xl:m-16 text-md sm:text-lg/normal md:text-xl/normal lg:text-2xl/normal space-y-4"
+	>
 		<slot />
 	</div>
 </Layout>

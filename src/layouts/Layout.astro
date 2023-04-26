@@ -15,8 +15,6 @@ const links = {
 	GoogleCDN: "https://fonts.gstatic.com",
 	BodoniMona: "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital@0;1&display=swap",
 	Montserrat: "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap",
-	OpenInNewTab:
-		"https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200",
 };
 ---
 
@@ -29,10 +27,8 @@ const links = {
 		<link rel="preconnect" href={links.GoogleCDN} crossorigin />
 		<link rel="preload" href={links.BodoniMona} as="style" />
 		<link rel="preload" href={links.Montserrat} as="style" />
-		<link rel="preload" href={links.OpenInNewTab} as="style" />
 		<link rel="stylesheet" href={links.BodoniMona} />
 		<link rel="stylesheet" href={links.Montserrat} />
-		<link rel="stylesheet" href={links.OpenInNewTab} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>

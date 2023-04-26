@@ -10,25 +10,27 @@ const relativeLink =
 ---
 
 <div class="bg-zinc-100 rounded-sm">
-	<h2 class="p-8 text-4xl bg-zinc-700">
-		<a href={relativeLink} target="_blank" class="hover:underline">
+	<h2
+		class="p-4 sm:p-5 md:p-6 lg:p-7 xl:p-8 text-xl/normal sm:text-2xl/normal md:text-3xl/normal lg:text-4xl/normal bg-zinc-700"
+	>
+		<a
+			href={relativeLink}
+			target="_blank"
+			class="hover:underline inline-flex items-center"
+		>
 			{title}
-			<span
-				class="material-symbols-outlined"
-				aria-label="Open in New Icon"
+			<svg
+				class="inline-block fill-white object-contain h-5 sm:h-6 md:h-7 lg:h-8 mx-1"
+				viewBox="0 96 960 960"
+				><path
+					d="M180 936q-24 0-42-18t-18-42V276q0-24 18-42t42-18h279v60H180v600h600V597h60v279q0 24-18 42t-42 18H180Zm202-219-42-43 398-398H519v-60h321v321h-60V319L382 717Z"
+				></path></svg
 			>
-				open_in_new
-			</span>
 		</a>
 	</h2>
-	<div class="text-xl p-8 text-zinc-700 space-y-4">
+	<div
+		class="text-sm sm:text-md/normal md:text-lg/normal lg:text-xl/normal p-5 md:p-7 xl:p-8 text-zinc-700 space-y-2.5 md:space-y-3.5 xl:space-y-4"
+	>
 		<slot />
 	</div>
 </div>
-
-<style scoped>
-	.material-symbols-outlined {
-		font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0,
-			"opsz" 48;
-	}
-</style>
