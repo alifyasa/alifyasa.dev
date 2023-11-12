@@ -1,11 +1,12 @@
-import { createSignal } from 'solid-js'
+import { NavigationBar } from './components'
 import './App.css'
+import { type JSXElement } from 'solid-js'
 
-function App() {
-
-  return (
-    <div class="mx-1">
-      <h1>Alif Yasa</h1>
+function App(page: () => JSXElement) {
+  return () => (
+    <div class="max-w-3xl mx-auto font-mono">
+      <NavigationBar />
+      <div class="p-8 border border-gray-200 border-t-0">{page()}</div>
     </div>
   )
 }
