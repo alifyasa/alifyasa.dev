@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import solidJs from "@astrojs/solid-js";
 
@@ -6,13 +6,16 @@ import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'hybrid',
+  output: "hybrid",
   integrations: [tailwind(), solidJs()],
   adapter: cloudflare({
-    mode: 'directory',
+    mode: "directory",
     functionPerRoute: true,
     routes: {
-      strategy: 'exclude'
-    }
-  })
+      strategy: "exclude",
+    },
+    runtime: {
+      mode: "local",
+    },
+  }),
 });

@@ -1,25 +1,26 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Link from "../components/Link/Link.astro";
+import Link from "../components/Link/Link.tsx";
 ---
 
 <Layout title="Alif Yasa">
-    <h1 class="text-2xl font-semibold mb-4">About Me</h1>
-    <p class="leading-relaxed mb-2">
-        I'm a final-year{" "}
-        <Link
-            href="https://stei.itb.ac.id/en/undergraduate-programs/bachelor-informatics/"
-        >
-            Informatics Engineering</Link>{" "}
-         student at{" "}
-        <Link href="https://www.itb.ac.id/en/">
-            Bandung Institute of Technology</Link>. 
-        While my primary interests are in Automation, DevOps, and Cloud
-        Computing, I've also worked with a bunch of different technologies,
-        ranging from React Native to Terraform to Rust.
-    </p>
-    <p class="leading-relaxed">
-        Feel free to <Link href="/contacts" openHere>contact me</Link>
-         if you'd like to chat more!
-    </p>
+  <h1 class="text-2xl font-semibold mb-4">About Me</h1>
+  <p class="leading-relaxed mb-2">
+    I'm a final-year{" "}
+    <Link
+      href="https://stei.itb.ac.id/en/undergraduate-programs/bachelor-informatics/"
+    >
+      {"Informatics Engineering"}
+    </Link>{" "}
+     student at{" "}
+    <Link href="https://www.itb.ac.id/en/">
+      {"Bandung Institute of Technology"}
+    </Link>. While my primary interests are in Automation, DevOps, and Cloud
+    Computing, I've also worked with a bunch of different technologies, ranging
+    from React Native to Terraform to Rust.
+  </p>
+  <p class="leading-relaxed">
+    Feel free to <Link href="/contacts" openHere>contact me</Link>
+     if you'd like to chat more!
+  </p>
 </Layout>

@@ -1,35 +1,35 @@
 ---
 interface NavigationItem {
-    name: string;
-    path: string;
+  name: string;
+  path: string;
 }
 
 const NAVIGATION_ITEMS: NavigationItem[] = [
-    {
-        name: "Home",
-        path: "/",
-    },
-    {
-        name: "Resume",
-        path: "/resume",
-    },
+  {
+    name: "Home",
+    path: "/",
+  },
+  {
+    name: "Resume",
+    path: "/resume",
+  },
 ];
 ---
 
 <div class="w-full flex flex-row overflow-scroll px-8 pt-8 justify-between">
-    <h1 class="my-auto font-bold text-3xl">Alif Yasa</h1>
-    <div class="flex">
+  <h1 class="my-auto font-bold text-3xl">Alif Yasa</h1>
+  <div class="flex">
     {
-        NAVIGATION_ITEMS.map((navItem) => (
-            <div class="flex border border-gray-200">
-                <a
-                    class="p-4 block text-left w-full hover:bg-gray-200"
-                    href={navItem.path}
-                >
-                    {navItem.name}
-                </a>
-            </div>
-        ))
+      NAVIGATION_ITEMS.map((navItem) => (
+        <div class="flex border border-gray-200">
+          <a
+            class="p-4 block text-left w-full hover:bg-gray-200"
+            href={navItem.path}
+          >
+            {navItem.name}
+          </a>
+        </div>
+      ))
     }
-    </div>
+  </div>
 </div>
