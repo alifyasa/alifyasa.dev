@@ -20,7 +20,9 @@ const getProjects = async (pageNumber: number) => {
   let statusText = response.statusText;
   if (response.status !== 200) {
     projects = [];
-    statusText = `Error when fetching GitHub data:. Status code ${response.status}: ${statusText}`;
+    statusText =
+      `Error: Unable to fetch data. Status code ${response.status}` +
+      (statusText ? `: ${statusText}` : "");
   } else {
     projects = await response.json();
   }
@@ -34,14 +36,14 @@ export default function Projects() {
   const [fetchProjectStatus, setFetchProjectStatus] =
     createSignal<FetchProgressStatus>({
       status: "other",
-      description: "Initial Load",
+      description: "Initializing...",
     });
   const [projects, setProjects] = createSignal<GitHubRepository[]>([]);
 
   createEffect(async () => {
     setFetchProjectStatus({
       status: "other",
-      description: "Fetching Projects data",
+      description: "Fetching project data...",
     });
     setProjects([]);
     localStorage.setItem("page", pageNumber().toString());
@@ -55,12 +57,12 @@ export default function Projects() {
     } else if (projects.length === 0) {
       setFetchProjectStatus({
         status: "other",
-        description: "No Response",
+        description: "No projects found.",
       });
     } else {
       setFetchProjectStatus({
         status: "success",
-        description: projects.length.toString(),
+        description: `Fetched ${projects.length} projects successfully.`,
       });
       setProjects(projects);
     }
