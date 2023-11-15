@@ -1,3 +1,5 @@
+export const prerender = false;
+
 interface GitHubRepository {
     name: string;
     full_name: string;
@@ -13,12 +15,18 @@ const getGithubAllRepos = (pageNumber: number) => fetch(
             Accept: "application/vnd.github+json",
             Authorization: `Bearer ${import.meta.env.GITHUB_PAT}`,
             "X-GitHub-Api-Version": "2022-11-28",
+            'User-Agent': 'request'
         },
     },
 );
 
 const getGithubPublicRepos = (pageNumber: number) => fetch(
-    `https://api.github.com/users/malifpy/repos?per_page=5&page=${pageNumber}`,
+    `https://api.github.com/users/alifyasa/repos?per_page=5&page=${pageNumber}`,
+    {
+        headers: {
+            'User-Agent': 'request'
+        }
+    }
 );
 
 export async function GET({ params }: { params: { pageNumber: number } }) {
@@ -46,6 +54,7 @@ export async function GET({ params }: { params: { pageNumber: number } }) {
     } catch (err: unknown) {
         console.log(`Projects - Error ${JSON.stringify(err)}`)
         return new Response(null, {
+            headers: { 'Content-Type': 'application/json' },
             status: publicRepos.status,
             statusText: publicRepos.statusText
         })

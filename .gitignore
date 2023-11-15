@@ -1,5 +1,8 @@
 # build output
 dist/
+.wrangler/
+functions/
+.vscode/
 
 # generated types
 .astro/

@@ -1,6 +1,8 @@
 ---
 import Link from "./Link/Link.astro";
-const contactsRequest = await fetch(Astro.url + "/contacts.json");
+import { GET } from "../pages/resume/contacts.json";
+
+const contactsRequest = await GET();
 const contacts: { name: string; url: string }[] = await contactsRequest.json();
 ---
 
@@ -11,7 +13,7 @@ const contacts: { name: string; url: string }[] = await contactsRequest.json();
             contacts.map((contact) => (
             <div class="flex border border-gray-200">
                 <Link
-                    style="p-4 block text-left w-full hover:bg-gray-200"
+                    style="px-4 py-2 block text-left w-full hover:bg-gray-200"
                     href={contact.url}
                 >
                     {contact.name}

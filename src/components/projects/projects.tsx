@@ -15,7 +15,7 @@ export type FetchProgressStatus = {
 }
 
 const getProjects = async (pageNumber: number) => {
-    const response = await fetch(`/resume/projects/page-${pageNumber}.json`);
+    const response = await fetch(`/resume/projects/${pageNumber}.json`);
     let projects: GitHubRepository[]
     let statusText = response.statusText
     if (response.status !== 200){
@@ -71,9 +71,9 @@ export default function Projects() {
         <div class='flex flex-row justify-between my-2'>
             <h2 class="text-xl font-semibold my-auto">Projects</h2>
             <div class="flex border border-gray-200 text-sm">
-                <button class="p-2 block hover:bg-gray-200 disabled:bg-gray-300" onClick={decrementPage} disabled={pageNumber() === 1}>Prev Page</button>
-                <p class="p-2 block">Page {pageNumber()}</p>
-                <button class="p-2 block hover:bg-gray-200 disabled:bg-gray-300" onClick={incrementPage} disabled={fetchProjectStatus().status === 'other'}>Next Page</button>
+                <button class="p-2 block hover:bg-gray-200 disabled:bg-gray-300" onClick={decrementPage} disabled={pageNumber() === 1}>{"<"}</button>
+                <p class="p-2 block w-16 text-center">Page {pageNumber()}</p>
+                <button class="p-2 block hover:bg-gray-200 disabled:bg-gray-300" onClick={incrementPage} disabled={fetchProjectStatus().status === 'other'}>{">"}</button>
             </div>
         </div>
         <DisplayProjects projects={projects} fetchProjectsStatus={fetchProjectStatus} />
