@@ -24,7 +24,7 @@ const getProjects = async (pageNumber: number) => {
     } else {
         projects = (await response.json());
     }
-    return { statusCode: response.status, statusText: response.statusText, projects }
+    return { statusCode: response.status, statusText, projects }
 }
 
 export default function Projects() {
@@ -41,7 +41,7 @@ export default function Projects() {
         })
         setProjects([])
         localStorage.setItem('page', pageNumber().toString());
-        let { statusCode, statusText, projects } = await getProjects(pageNumber())
+        const { statusCode, statusText, projects } = await getProjects(pageNumber())
         if (statusCode !== 200) {
             setFetchProjectStatus({
                 status: 'other',
@@ -61,8 +61,8 @@ export default function Projects() {
         }
     })
 
-    createEffect(() => console.log(pageNumber()))
-    createEffect(() => console.log(projects()))
+    // createEffect(() => console.log(pageNumber()))
+    // createEffect(() => console.log(projects()))
 
     const incrementPage = () => setPageNumber(pageNumber() + 1);
     const decrementPage = () => setPageNumber(Math.max(pageNumber() - 1, 1));
