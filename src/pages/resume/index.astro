@@ -1,50 +1,11 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import.meta.env.GITHUB_PAT;
-
-const { body: contacts } = await fetch(Astro.url + "/contacts.json");
-
-interface ErrorMessage {
-    message: string;
-    documentation_url: string;
-}
-interface GitHubResponse {
-    name: string;
-    full_name: string;
-    html_url: string;
-    description: string;
-    topics: string[];
-}
-const github_response = await fetch("https://api.github.com/user/repos", {
-    headers: {
-        Accept: "application/vnd.github+json",
-        Authorization: `Bearer ${import.meta.env.GITHUB_PAT}`,
-        "X-GitHub-Api-Version": "2022-11-28",
-    },
-});
-const statusCode = github_response.status;
-const projects: GitHubResponse[] | ErrorMessage = await github_response.json();
+import Projects from "../../components/projects/projects";
+import Contacts from "../../components/Contacts.astro";
 ---
 
 <Layout title="Alif Yasa | Resume">
-    <div>
-        {contacts}
-    </div>
-    <div>
-        {
-            statusCode === 200 ? (
-                (projects as GitHubResponse[])?.map((p) => (
-                    <>
-                        <h1>{p.full_name}</h1>
-                        <p class="mb-4">{p.description}</p>
-                    </>
-                ))
-            ) : (
-                <>
-                    <p>{statusCode}</p>
-                    <p>{(projects as ErrorMessage).message}</p>
-                </>
-            )
-        }
-    </div>
+    <h1 class="text-2xl font-semibold mb-4">Resume</h1>
+    <Contacts />
+    <Projects client:only="solid-js" />
 </Layout>
