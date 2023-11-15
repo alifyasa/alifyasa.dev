@@ -33,13 +33,21 @@ export async function GET({ params }: { params: { pageNumber: number } }) {
 
     console.log(`Projects - GitHub All Repositories status code: ${allRepos.status}`)
     console.log(`Projects - GitHub Public Repositories status code: ${publicRepos.status}`)
-    if (allRepos.status === 200) {
-        let repositories: GitHubRepository[] = (await allRepos.json())
-        repositories = repositories.map(({ name, full_name, html_url, description, topics }) => ({ name, full_name, html_url, description, topics }))
-        return new Response(JSON.stringify(repositories));
-    } else {
-        let repositories: GitHubRepository[] = (await publicRepos.json())
-        repositories = repositories.map(({ name, full_name, html_url, description, topics }) => ({ name, full_name, html_url, description, topics }))
-        return new Response(JSON.stringify(repositories));
+    try {
+        if (allRepos.status === 200) {
+            let repositories: GitHubRepository[] = (await allRepos.json())
+            repositories = repositories.map(({ name, full_name, html_url, description, topics }) => ({ name, full_name, html_url, description, topics }))
+            return new Response(JSON.stringify(repositories));
+        } else {
+            let repositories: GitHubRepository[] = (await publicRepos.json())
+            repositories = repositories.map(({ name, full_name, html_url, description, topics }) => ({ name, full_name, html_url, description, topics }))
+            return new Response(JSON.stringify(repositories));
+        }
+    } catch (err: unknown) {
+        console.log(`Projects - Error ${JSON.stringify(err)}`)
+        return new Response(null, {
+            status: publicRepos.status,
+            statusText: publicRepos.statusText
+        })
     }
 }

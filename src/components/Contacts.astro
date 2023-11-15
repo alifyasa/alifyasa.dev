@@ -1,8 +1,23 @@
 ---
-const { body: contacts } = await fetch(Astro.url + "/contacts.json");
+import Link from "./Link/Link.astro";
+const contactsRequest = await fetch(Astro.url + "/contacts.json");
+const contacts: { name: string; url: string }[] = await contactsRequest.json();
 ---
 
 <>
     <h2 class="text-xl font-semibold my-2">Contacts</h2>
-    {contacts}
+    <div class="flex">
+        {
+            contacts.map((contact) => (
+            <div class="flex border border-gray-200">
+                <Link
+                    style="p-4 block text-left w-full hover:bg-gray-200"
+                    href={contact.url}
+                >
+                    {contact.name}
+                </Link>
+            </div>
+            ))
+        }
+    </div>
 </>
