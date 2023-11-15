@@ -13,6 +13,9 @@ export default defineConfig({
     functionPerRoute: true,
     routes: {
       strategy: 'exclude'
+    },
+    runtime: {
+      mode: 'local'
     }
   })
 });
