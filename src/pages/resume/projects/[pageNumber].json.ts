@@ -1,4 +1,45 @@
+import type { APIContext } from "astro";
+
 export const prerender = false;
+
+async function GET({ params, locals }: APIContext): Promise<Response> {
+    const pageNumber = Number(params.pageNumber) || 1;
+
+    const PROJECTS_KV = locals.runtime.env["alifyasa.dev"]
+    const KV_KEY = `page/${pageNumber}`
+
+    try {
+        const cachedData = await PROJECTS_KV.get(KV_KEY);
+
+        if (cachedData) {
+            return new Response(cachedData);
+        }
+
+        const [allRepos, publicRepos] = await Promise.all([
+            getGithubAllRepos(pageNumber),
+            getGithubPublicRepos(pageNumber)
+        ]);
+
+        const repositories = allRepos.status === 200
+            ? await parseRepositories(allRepos)
+            : await parseRepositories(publicRepos);
+
+        await PROJECTS_KV.put(KV_KEY, JSON.stringify(repositories), {
+            // value is valid for 24 hours
+            expirationTtl: 24 * 60 * 60 // in seconds
+        });
+
+        return new Response(JSON.stringify(repositories));
+    } catch (err) {
+        console.log(`Projects - Error ${JSON.stringify(err)}`);
+
+        return new Response(null, {
+            headers: { 'Content-Type': 'application/json' },
+            status: 500,
+            statusText: 'Internal Server Error'
+        });
+    }
+}
 
 interface GitHubRepository {
     name: string;
@@ -29,34 +70,16 @@ const getGithubPublicRepos = (pageNumber: number) => fetch(
     }
 );
 
-export async function GET({ params }: { params: { pageNumber: number } }) {
-    console.log(`Projects - URL: ${JSON.stringify(params)}`)
-    const pageNumber = Number(params.pageNumber) || 1
-    console.log(`Projects - Page ${pageNumber}`)
+async function parseRepositories(response: Response): Promise<GitHubRepository[]> {
+    const repositories: GitHubRepository[] = await response.json();
 
-    const [allRepos, publicRepos] = await Promise.all([
-        getGithubAllRepos(pageNumber),
-        getGithubPublicRepos(pageNumber)
-    ]);
-
-    console.log(`Projects - GitHub All Repositories status code    : ${allRepos.status}`)
-    console.log(`Projects - GitHub Public Repositories status code : ${publicRepos.status}`)
-    try {
-        if (allRepos.status === 200) {
-            let repositories: GitHubRepository[] = (await allRepos.json())
-            repositories = repositories.map(({ name, full_name, html_url, description, topics }) => ({ name, full_name, html_url, description, topics }))
-            return new Response(JSON.stringify(repositories));
-        } else {
-            let repositories: GitHubRepository[] = (await publicRepos.json())
-            repositories = repositories.map(({ name, full_name, html_url, description, topics }) => ({ name, full_name, html_url, description, topics }))
-            return new Response(JSON.stringify(repositories));
-        }
-    } catch (err: unknown) {
-        console.log(`Projects - Error ${JSON.stringify(err)}`)
-        return new Response(null, {
-            headers: { 'Content-Type': 'application/json' },
-            status: publicRepos.status,
-            statusText: publicRepos.statusText
-        })
-    }
+    return repositories.map(({ name, full_name, html_url, description, topics }) => ({
+        name,
+        full_name,
+        html_url,
+        description,
+        topics
+    }));
 }
+
+export default GET;
