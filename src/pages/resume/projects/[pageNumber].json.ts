@@ -9,7 +9,7 @@ interface GitHubRepository {
 }
 
 const getGithubAllRepos = (pageNumber: number) => fetch(
-    `https://api.github.com/user/repos?per_page=5&page=${pageNumber}`,
+    `https://api.github.com/user/repos?per_page=5&page=${pageNumber}&sort=pushed`,
     {
         headers: {
             Accept: "application/vnd.github+json",
@@ -21,7 +21,7 @@ const getGithubAllRepos = (pageNumber: number) => fetch(
 );
 
 const getGithubPublicRepos = (pageNumber: number) => fetch(
-    `https://api.github.com/users/alifyasa/repos?per_page=5&page=${pageNumber}`,
+    `https://api.github.com/users/alifyasa/repos?per_page=5&page=${pageNumber}&sort=pushed`,
     {
         headers: {
             'User-Agent': 'request'
@@ -39,8 +39,8 @@ export async function GET({ params }: { params: { pageNumber: number } }) {
         getGithubPublicRepos(pageNumber)
     ]);
 
-    console.log(`Projects - GitHub All Repositories status code: ${allRepos.status}`)
-    console.log(`Projects - GitHub Public Repositories status code: ${publicRepos.status}`)
+    console.log(`Projects - GitHub All Repositories status code    : ${allRepos.status}`)
+    console.log(`Projects - GitHub Public Repositories status code : ${publicRepos.status}`)
     try {
         if (allRepos.status === 200) {
             let repositories: GitHubRepository[] = (await allRepos.json())
