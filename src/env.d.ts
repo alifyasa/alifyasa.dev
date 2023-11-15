@@ -3,7 +3,7 @@
 type KVNamespace = import("@cloudflare/workers-types").KVNamespace;
 type ENV = {
   // replace `MY_KV` with your KV namespace
-  'alifyasa.dev': KVNamespace;
+  "alifyasa.dev": KVNamespace;
 };
 
 // Depending on your adapter mode
@@ -16,10 +16,10 @@ declare namespace App {
 
 /// <reference types="astro/client" />
 interface ImportMetaEnv {
-    readonly GITHUB_PAT: string;
-    // more env variables...
+  readonly GITHUB_PAT: string;
+  // more env variables...
 }
 
 interface ImportMeta {
-    readonly env: ImportMetaEnv;
+  readonly env: ImportMetaEnv;
 }

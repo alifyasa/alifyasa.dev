@@ -1,11 +1,15 @@
 ---
 interface Props {
-    href: string;
-    style?: string;
-    openHere?: boolean;
+  href: string;
+  style?: string;
+  openHere?: boolean;
 }
 
-const { href, openHere = false, style = '' } = Astro.props;
+const { href, openHere = false, style = "" } = Astro.props;
 ---
 
-<a class=`underline ${style}` href={href} target={openHere ? undefined : "_blank"}><slot/></a>
+<a
+  class=`underline ${style}`
+  href={href}
+  target={openHere ? undefined : "_blank"}><slot /></a
+>
