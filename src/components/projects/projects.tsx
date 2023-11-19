@@ -35,13 +35,16 @@ export default function Projects() {
   const [fetchProjectStatus, setFetchProjectStatus] =
     createSignal<FetchProgressStatus>({
       status: "other",
-      description: "Initializing...",
+      description: "Loading... Please enable JavaScript to view this content.",
     });
 
   const [projects, setProjects] = createSignal<GitHubRepository[]>([]);
 
   onMount(() => {
-    setPageNumber(Number(localStorage.getItem("page")) || 1);
+    const localPageNumber = Number(localStorage.getItem("page")) || 1
+    if (localPageNumber !== pageNumber()) {
+      setPageNumber(localPageNumber);
+    }
   });
 
   createEffect(async () => {
@@ -71,9 +74,6 @@ export default function Projects() {
       setProjects(projects);
     }
   });
-
-  // createEffect(() => console.log(pageNumber()))
-  // createEffect(() => console.log(projects()))
 
   const incrementPage = () => setPageNumber(pageNumber() + 1);
   const decrementPage = () => setPageNumber(Math.max(pageNumber() - 1, 1));
