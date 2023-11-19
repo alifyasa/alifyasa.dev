@@ -1,4 +1,4 @@
-import { createEffect, createSignal } from "solid-js";
+import { createEffect, createSignal, onMount } from "solid-js";
 import DisplayProjects from "./display-projects";
 
 export interface GitHubRepository {
@@ -30,15 +30,19 @@ const getProjects = async (pageNumber: number) => {
 };
 
 export default function Projects() {
-  const [pageNumber, setPageNumber] = createSignal(
-    Number(localStorage.getItem("page")) || 1,
-  );
+  const [pageNumber, setPageNumber] = createSignal(1);
+
   const [fetchProjectStatus, setFetchProjectStatus] =
     createSignal<FetchProgressStatus>({
       status: "other",
       description: "Initializing...",
     });
+
   const [projects, setProjects] = createSignal<GitHubRepository[]>([]);
+
+  onMount(() => {
+    setPageNumber(Number(localStorage.getItem("page")) || 1);
+  });
 
   createEffect(async () => {
     setFetchProjectStatus({
