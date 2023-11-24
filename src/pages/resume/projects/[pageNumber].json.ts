@@ -9,7 +9,7 @@ export async function GET({ params, locals }: APIContext): Promise<Response> {
   const KV_KEY = `page/${pageNumber}`;
 
   try {
-    LOG("GET - Attempting to fetch cached data for page ${pageNumber}");
+    LOG(`GET - Attempting to fetch cached data for page ${pageNumber}`);
     const cachedData = await PROJECTS_KV.get(KV_KEY);
 
     if (cachedData) {
