@@ -1,34 +1,38 @@
-# Personal Website
+# create-svelte
 
-This website is designed to showcase my work and skills.
+Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
-## Technologies Used
+## Creating a project
 
-Built using Astro and Solid.js, deployed using Cloudflare Pages.
+If you're seeing this, you've probably already done this step. Congrats!
 
-## Project Structure
+```bash
+# create a new project in the current directory
+npm create svelte@latest
 
+# create a new project in my-app
+npm create svelte@latest my-app
 ```
-src
-├── components
-├── layouts
-└── pages
+
+## Developing
+
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+
+```bash
+npm run dev
+
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
 ```
 
-This represents the structure of the project's source code:
+## Building
 
-1.  `components`: Holds various reusable components used across the site.
-2.  `layouts`: Contains the layout files, defining the overall structure of the pages.
-3.  `pages`: Includes the different pages of the website.
+To create a production version of your app:
 
-## Commands
+```bash
+npm run build
+```
 
-| Command   | Description                                                                          |
-| --------- | ------------------------------------------------------------------------------------ |
-| `dev`     | Starts the development server using `astro dev`                                      |
-| `start`   | Alias for `astro dev`                                                                |
-| `build`   | Checks code with `astro check` and builds with `astro build`                         |
-| `preview` | Creates a preview using Cloudflare Pages dev server with `wrangler pages dev ./dist` |
-| `astro`   | Runs Astro CLI commands                                                              |
-| `lint`    | Runs ESLint with auto-fixing                                                         |
-| `format`  | Runs Prettier to format code                                                         |
+You can preview the production build with `npm run preview`.
+
+> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
