@@ -1,19 +1,24 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, nextTick } from 'vue';
 
 const email = 'contact@mail.alifyasa.dev'
 const emailSubject = ref('')
 const emailBody = ref('')
-function openEmailClient() {
+
+async function openEmailClient() {
     const link = `mailto:${email}?subject=${emailSubject.value}&body=${emailBody.value}`
     console.log(link)
     window.open(link, '_blank')
+    await nextTick()
+    resetEmailForms()
 }
+
 function resetEmailForms() {
     emailSubject.value = ''
     emailBody.value = ''
 }
 </script>
+
 <template>
     <BaseH1>Contacts</BaseH1>
     <fieldset>

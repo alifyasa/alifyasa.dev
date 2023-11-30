@@ -9,7 +9,9 @@
     </div>
     <div aria-label="Highlighted Projects">
         <BaseH1>Highlighted Projects</BaseH1>
-        <ProjectDisplay project-title="Reddit Comment Archiver"/>
+        <ProjectDisplay class="mb-2" project-title="Project 1"/>
+        <ProjectDisplay class="mb-2" project-title="Project 2"/>
+        <ProjectDisplay class="mb-2" project-title="Project 3"/>
     </div>
     <div aria-label="Experiences">
         <BaseH1>Experiences</BaseH1>

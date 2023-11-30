@@ -9,6 +9,6 @@ const props = defineProps({
 <template>
     <div class="border px-4 py-2 rounded-md border-rust">
         <BaseH2>{{ props.projectTitle }}</BaseH2>
-        <BaseParagraph>Hahahahahah</BaseParagraph>
+        <BaseParagraph>???</BaseParagraph>
     </div>
 </template>
