@@ -16,10 +16,9 @@ export default defineNuxtConfig({
     },
   },
   googleFonts: {
-    display: 'auto',
     families: {
-      'Crimson+Text': [400, 600, 700],
-      'Open+Sans': [400],
+      'Crimson+Text': true,
+      'Open+Sans': true,
     }
   }
 })

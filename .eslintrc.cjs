@@ -25,6 +25,7 @@ module.exports = {
             files: ['pages/**/*.vue', 'layouts/*.vue'],
             rules: {
                 'vue/multi-word-component-names': 'off',
+                'no-undef': 'off'
             },
         },
     ],

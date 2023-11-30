@@ -8,6 +8,13 @@ export const content = [
     "./app.vue",
     "./error.vue",
 ];
+// https://tailwindcss.nuxtjs.org/tailwind/config#safelisting-classes
+export const safelist = [
+    'safelisted',
+    {
+        pattern: /(bg|text)-(beige|rust|jet)/,
+    },
+]
 export const theme = {
     extend: {
         fontFamily: {
