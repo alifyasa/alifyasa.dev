@@ -1,8 +1,15 @@
 <script setup lang="ts">
 import { useFetch } from 'nuxt/app';
-const { data } = await useFetch('/api/projects')
+const { data } = await useFetch('/api/projects?perPage=30')
 </script>
 <template>
     <BaseH1>All Projects</BaseH1>
-    <pre>{{ data?.repositories }}</pre>
+    <div v-for="repo in data?.repositories" :key="repo.full_name">
+        <ProjectDisplay 
+            class="mb-2" 
+            :project-title="repo.full_name"
+            :project-description="repo.description"
+        ></ProjectDisplay>
+    </div>
+
 </template>
