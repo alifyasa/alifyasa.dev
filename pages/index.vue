@@ -14,11 +14,8 @@
     <div aria-label="Experiences">
         <BaseH1>Experiences</BaseH1>
         <BaseParagraph>
-            I'm a final-year Informatics Engineering student at Bandung Institute of Technology. While my primary interests
-            are
-            in Automation, DevOps, and Cloud Computing, I've also worked with a bunch of different technologies, ranging
-            from
-            React Native to Terraform to Rust. Feel free to contact me if you'd like to chat more!
+            Socles, Software Engineering Intern. Jul 2023 - Now
+            Distributed Systems Lab, Institut Teknologi Bandung, Lab Assistant. Jul 2022 - Now
         </BaseParagraph>
     </div>
 </template>

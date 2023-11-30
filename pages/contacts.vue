@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+
 const email = 'contact@mail.alifyasa.dev'
 const emailSubject = ref('')
 const emailBody = ref('')
