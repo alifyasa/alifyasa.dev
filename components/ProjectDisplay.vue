@@ -6,13 +6,20 @@ const props = defineProps({
     },
     projectDescription: {
         type: String
+    },
+    projectGithubUrl: {
+        type: String
     }
 })
 </script>
 <template>
-    <div class="border px-4 py-2 rounded-md border-rust">
+    <div class="border px-4 pt-2 pb-4 rounded-md border-rust shadow-md">
+        
         <BaseH2>{{ props.projectTitle }}</BaseH2>
-        <BaseParagraph class="text-lg" v-if="props.projectDescription">{{ props.projectDescription }}</BaseParagraph>
-        <BaseParagraph class="text-lg" v-else>No Description</BaseParagraph>
+
+        <BaseParagraph class="text-md" v-if="props.projectDescription">{{ props.projectDescription }}</BaseParagraph>
+        <BaseParagraph class="text-md" v-else>
+            <pre>No Description</pre>
+        </BaseParagraph>
     </div>
 </template>
