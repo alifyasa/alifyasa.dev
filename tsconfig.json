@@ -1,9 +1,4 @@
 {
-  "extends": "astro/tsconfigs/strictest",
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "functions"],
-  "compilerOptions": {
-    "jsx": "preserve",
-    "jsxImportSource": "solid-js"
-  }
+  // https://nuxt.com/docs/guide/concepts/typescript
+  "extends": "./.nuxt/tsconfig.json"
 }

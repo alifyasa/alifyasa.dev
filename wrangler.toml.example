@@ -1,3 +1,0 @@
-kv_namespaces = [
-    { id = "<ID>", binding = "<BINDING>" }
-]
