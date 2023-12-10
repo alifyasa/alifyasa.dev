@@ -5,6 +5,12 @@
                 <BaseLink href="/">Home</BaseLink>
             </li>
             <li class="w-fit mr-6">
+                <BaseLink 
+                    href="https://blog.alifyasa.dev" 
+                    :open-in-new-tab="true"
+                >Blog</BaseLink>
+            </li>
+            <li class="w-fit mr-6">
                 <BaseLink href="/projects">Projects</BaseLink>
             </li>
             <li class="w-fit mr-6">
