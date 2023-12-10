@@ -1,34 +1,75 @@
-# Personal Website
+# Nuxt 3 Minimal Starter
 
-This website is designed to showcase my work and skills.
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-## Technologies Used
+## Setup
 
-Built using Astro and Solid.js, deployed using Cloudflare Pages.
+Make sure to install the dependencies:
 
-## Project Structure
+```bash
+# npm
+npm install
 
+# pnpm
+pnpm install
+
+# yarn
+yarn install
+
+# bun
+bun install
 ```
-src
-├── components
-├── layouts
-└── pages
+
+## Development Server
+
+Start the development server on `http://localhost:3000`:
+
+```bash
+# npm
+npm run dev
+
+# pnpm
+pnpm run dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
 ```
 
-This represents the structure of the project's source code:
+## Production
 
-1.  `components`: Holds various reusable components used across the site.
-2.  `layouts`: Contains the layout files, defining the overall structure of the pages.
-3.  `pages`: Includes the different pages of the website.
+Build the application for production:
 
-## Commands
+```bash
+# npm
+npm run build
 
-| Command   | Description                                                                          |
-| --------- | ------------------------------------------------------------------------------------ |
-| `dev`     | Starts the development server using `astro dev`                                      |
-| `start`   | Alias for `astro dev`                                                                |
-| `build`   | Checks code with `astro check` and builds with `astro build`                         |
-| `preview` | Creates a preview using Cloudflare Pages dev server with `wrangler pages dev ./dist` |
-| `astro`   | Runs Astro CLI commands                                                              |
-| `lint`    | Runs ESLint with auto-fixing                                                         |
-| `format`  | Runs Prettier to format code                                                         |
+# pnpm
+pnpm run build
+
+# yarn
+yarn build
+
+# bun
+bun run build
+```
+
+Locally preview production build:
+
+```bash
+# npm
+npm run preview
+
+# pnpm
+pnpm run preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
