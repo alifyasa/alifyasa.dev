@@ -1,17 +1,26 @@
 <template>
     <div aria-label="Introduction">
-        <BaseH1>Alif Yasa</BaseH1>
+        <BaseH1>Hello, World!</BaseH1>
+        <BaseParagraph class="mb-4">
+            I'm Alif. I study Informatics Engineering in Institut Teknologi Bandung.
+        </BaseParagraph>
         <BaseParagraph>
-            I'm a final-year Informatics Engineering student at Bandung Institute of Technology.
-            I'm interested in Cloud Computing, Automation, and other web related topics.
-            I've used a wide range of technologies both in my personal projects and my jobs/internships.
+            Lately, I've been interested in web-related topics, especially security.
+            See my Try Hack Me profile <div class="inline">
+                <BaseLink 
+                    href="https://tryhackme.com/p/alifyasa" 
+                    color="rust"
+                    :without-underline="true"
+                    :open-in-new-tab="true"
+                >here</BaseLink>
+            </div>.
         </BaseParagraph>
     </div>
     <div aria-label="Highlighted Projects">
         <BaseH1>Highlighted Projects</BaseH1>
-        <ProjectDisplay class="mb-4" project-title="Project 1"/>
-        <ProjectDisplay class="mb-4" project-title="Project 2"/>
-        <ProjectDisplay class="mb-4" project-title="Project 3"/>
+        <ProjectDisplay class="mb-4" project-title="Project 1" />
+        <ProjectDisplay class="mb-4" project-title="Project 2" />
+        <ProjectDisplay class="mb-4" project-title="Project 3" />
     </div>
     <div aria-label="Experiences">
         <BaseH1>Experiences</BaseH1>
