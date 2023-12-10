@@ -7,7 +7,15 @@ const props = defineProps({
     'color': {
         type: String,
         default: 'beige'
-    }
+    },
+    'withoutUnderline': {
+        type: Boolean,
+        default: false
+    },
+    'openInNewTab': {
+        type: Boolean,
+        default: false
+    }, 
 })
 
 // https://tailwindcss.nuxtjs.org/tailwind/config#safelisting-classes
@@ -16,8 +24,12 @@ const bgColor = 'bg-' + props.color
 </script>
 
 <template>
-    <a :class="['group transition duration-200', textColor]" :href="props.href">
+    <a 
+        :class="['group transition duration-200 w-fit inline-block', textColor]" 
+        :href="props.href"
+        :target="props.openInNewTab ? '_blank' : '_self'"
+    >
         <slot></slot>
-        <span :class="['block max-w-0 group-hover:max-w-full transition-all duration-150 h-0.5', bgColor]"></span>
+        <span v-if="!props.withoutUnderline" :class="['block max-w-0 group-hover:max-w-full transition-all duration-150 h-0.5', bgColor]"></span>
     </a>
 </template>
